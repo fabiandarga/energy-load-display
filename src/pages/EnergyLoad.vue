@@ -1,8 +1,9 @@
-<template>
-    <section>
-        Content
-    </section>
-</template>
-
-<script lang="ts">
+<script setup lang="ts">
+import EnergyLoadTable from "@/components/EnergyLoadTable.vue";
 </script>
+
+<template>
+  <section>
+    <EnergyLoadTable />
+  </section>
+</template>

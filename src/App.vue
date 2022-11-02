@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import EnergyLoad from "./pages/EnergyLoad.vue";
+import EnergyLoad from "./pages/EnergyLoad.vue";
 </script>
 
 <template>
