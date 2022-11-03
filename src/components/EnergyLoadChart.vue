@@ -16,6 +16,7 @@ import {
   LinearScale,
 } from "chart.js";
 import type { Tuple } from "@/types/Table";
+import { getBatteryColor, getSolarPanelColor } from "@/utils/ColorUtils";
 
 ChartJS.register(
   Title,
@@ -35,23 +36,22 @@ const colors = ["#a108a1", "#c9ecac", "#f2bf27", "#5ac1ff"];
 const chartData = computed(() => {
   return {
     labels: props.timeStops,
+    hoverBorderWidth: 5,
     datasets: props.columns.map((column: Tuple, index: number) => ({
       label: props.labels[index],
       backgroundColor: (pointData: any) => {
         if (index === 1) {
-          // warning color for charging batteries
-          if (pointData.raw < 0) {
-            return "#ff0000";
-          }
-          if (pointData.raw > 0) {
-            // color for using batteries
-            return "#4bbb33";
-          }
+          return getBatteryColor(pointData.raw);
+        }
+        if (index === 2) {
+          return getSolarPanelColor(pointData.raw);
         }
         // default color
-        return "#ffffff";
+        return "#b7b7b7";
       },
       borderColor: colors[index],
+      pointStyle: "rect",
+      pointRadius: 5,
       data: column,
     })),
   };
@@ -65,5 +65,3 @@ const options = {
   },
 };
 </script>
-
-<style></style>
