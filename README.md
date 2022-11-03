@@ -1,27 +1,33 @@
-# load-display
+# Energy Load Display
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a small example of data visualization.  
 
-## Recommended IDE Setup
+## Features
+* Data Table aligns with the chart
+* Chart and Table have an indicator for battery and solar panel status
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Up Next
+Possible upgrades
+* When I hover over a data point in the chart or the table the other needs to get a hightlight as well
+* status dependent color for the lines (not only the points) in the graph, for battery and solar
+* Some interactive Elements:
+### Forecast Controls
+I would like to add the option to adjust the values of each point in time:
+* toggle the battery loading (using/loading/waiting)
+* slider to set engine levels (0-100%)
 
-## Type Support for `.vue` Imports in TS
+When the controls are used, we could show an alternative line in the graph which respects the changes.
+This way the operator could see which effect her actions would have in the forecast.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Warnings
+There could be warning if the load needs to be kept inside specific parameters. Maybe the engine load needs to be kept below 100. We could show a red horizontal line in the graph and maybe some info messages below the table. E.g.:
+> "Warning: at 1:30 total load is expect to rise above 80"  
+> "Warning: at 2:00 the batteries are empty"  
+> "Warning: at 4:50 total load is expect to rise above 80"  
+> "Danger: at 5:30 total load is expect to rise above 100"
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Project Commands
+### Project Setup
 
 ```sh
 npm install
@@ -31,22 +37,4 @@ npm install
 
 ```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
