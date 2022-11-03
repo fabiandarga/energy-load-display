@@ -5,30 +5,49 @@ import loadData from "../data/loadData";
 const res = loadData();
 
 const { head, data } = res;
-const dataByColumn = flipTable(data);
+const dataByColumn = flipTable(data).slice(1);
 </script>
 
 <template>
-  <table class="energyLoadTable">
-    <tr v-for="(title, index) in head" :key="title">
-      <th>{{ title }}</th>
-      <td v-for="entry in dataByColumn[index]" :key="entry">{{ entry }}</td>
-    </tr>
-  </table>
+  <div class="energyLoadTable">
+    <div v-for="(title, index) in head" :key="title" class="energyLoadTableRow">
+      <div
+        v-for="entry in dataByColumn[index]"
+        :key="entry"
+        :class="{ negative: entry < 0 }"
+      >
+        {{ entry }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.energyLoadTable th {
-  font-weight: bold;
-  text-align: start;
-  white-space: nowrap;
-  padding: 0.1em 0;
+.energyLoadTableRow {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
 }
-.energyLoadTable td {
+.energyLoadTableRow div {
   text-align: end;
-  padding: 0.1em 0.5em;
 }
-.energyLoadTable tr:last-child td {
+
+.energyLoadTableRow:nth-child(1) {
+  background: #a108a144;
+}
+.energyLoadTableRow:nth-child(2) {
+  background: #c9ecac80;
+}
+.energyLoadTableRow:nth-child(3) {
+  background: #f2bf2744;
+}
+.energyLoadTableRow:nth-child(4) {
+  background: #5ac1ff44;
+}
+.energyLoadTableRow div.negative {
+  background: #b0352ec7;
+}
+.energyLoadTableRow:last-child {
   padding-top: 0.7em;
   font-weight: bold;
 }
