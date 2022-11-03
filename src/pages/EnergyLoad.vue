@@ -42,13 +42,13 @@ const dataByColumn = flipTable(data);
   grid-row: 2;
   grid-column: 1;
   font-size: 11px;
-  line-height: 20px; 
+  line-height: 24px;
 }
 .table {
   grid-row: 2;
   grid-column: 2;
   font-size: 13px;
-  line-height: 20px;
+  line-height: 24px;
   margin-left: 15px;
 }
 </style>

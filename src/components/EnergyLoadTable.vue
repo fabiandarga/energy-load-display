@@ -10,13 +10,20 @@ const dataByColumn = flipTable(data).slice(1);
 
 <template>
   <div class="energyLoadTable">
-    <div v-for="(title, index) in head" :key="title" class="energyLoadTableRow">
+    <div
+      v-for="(title, index) in head.slice(1)"
+      :key="title"
+      class="energyLoadTableRow"
+    >
       <div
-        v-for="entry in dataByColumn[index]"
-        :key="entry"
-        :class="{ negative: entry < 0 }"
+        v-for="load in dataByColumn[index]"
+        :key="load"
+        :class="{
+          negative: load < 0,
+          solarLoad: title === 'Solar Panels' && load > 0,
+        }"
       >
-        {{ entry }}
+        {{ load }}
       </div>
     </div>
   </div>
@@ -47,8 +54,10 @@ const dataByColumn = flipTable(data).slice(1);
 .energyLoadTableRow div.negative {
   background: #b0352ec7;
 }
-.energyLoadTableRow:last-child {
-  padding-top: 0.7em;
+.energyLoadTableRow div.solarLoad {
+  background: #b99016b6;
+}
+.energyLoadTableRow:last-child div {
   font-weight: bold;
 }
 </style>
