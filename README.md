@@ -25,7 +25,11 @@ There could be warning if the load needs to be kept inside specific parameters. 
 > "Warning: at 2:00 the batteries are empty"  
 > "Warning: at 4:50 total load is expect to rise above 80"  
 > "Danger: at 5:30 total load is expect to rise above 100"
+## Project Setup
+This Project uses **Vue.js 3**. I have been using Vue2 for a long time and lately a bit more react. Now I wanted to try a small project with Vue3.  
 
+For the charts I have added 
+**chart.js and vue-chartjs**. I have worked with this before, so I knew how to use its features. The api feels a bit outdated to me, but has a lots of options. I think there are alternatives which are maybe a little bit more modern and interactive.
 ## Project Commands
 ### Project Setup
 
